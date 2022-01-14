@@ -1,0 +1,77 @@
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Nunito', sans-serif;
+}
+main > .box{
+  width: 509px;
+  height: 669px; 
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+main > .box > .title{
+    font-weight: 800;
+    font-size: 40px;
+    margin-top: 45px;
+}
+main > .box > .formBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main > .box > .formBox input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 23px 80px;
+  background-color: black;
+  margin-top: 26px;
+  font-family: 'Nunito', sans-serif;
+  color: white;
+  border: none;
+  font-weight: 700;
+  font-size: 22px;
+}
+main > .box > .formBox input::placeholder{
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  font-size: 22px;
+}
+main > .box > .formBox input:focus::placeholder{
+  color: transparent;
+  
+}
+main > .box > .formBox .submit{
+  margin-top: 166px;
+  width: 7em;
+  height: 2.5em;
+  display: flex;
+  align-self: center;
+  flex-direction: row;
+  justify-content: center;
+  align-items:center;
+  border: none;
+  cursor: pointer;
+  padding: 14px 40px;
+  background: linear-gradient(262.37deg, #040A1F 9.01%, #360A21 109.84%);
+  color: white;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  font-size: 25px;
+  transition: all .2s ease-in-out; 
+  transition-duration: 0.1s;
+}
+main > .box > .formBox .submit:hover{
+ transform: scale(1.05); 
+}
