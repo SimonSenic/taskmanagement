@@ -1,10 +1,10 @@
 <main>
   <div class="box">
     <h1 class="title">LOGIN</h1>
-    <form action="" class="formBox">
-      <input type="text" placeholder="USERNAME">
-      <input type="password" placeholder="PASSWORD">
-      <button type="submit" class="submit">LOGIN</button>
+    <form class="formBox" [formGroup]="loginForm">
+      <input type="text" formControlName="email" placeholder="EMAIL">
+      <input type="password" formControlName="password" placeholder="PASSWORD">
+      <button type="submit" class="submit" (click)="signIn()">LOGIN</button>
     </form>
   </div>
   
