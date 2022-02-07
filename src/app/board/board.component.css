@@ -12,7 +12,7 @@ main > .top {
   display: flex;
   align-items: center;
 }
-main > .top > #username{
+main > .top > #email{
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   color: white;

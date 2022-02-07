@@ -41,6 +41,9 @@ main > .box > .formBox input{
   font-weight: 700;
   font-size: 22px;
 }
+main > .box > .formBox input.ng-invalid{
+  border-left: 3px solid red;
+}
 main > .box > .formBox input::placeholder{
   font-family: 'Nunito', sans-serif;
   text-align: center;

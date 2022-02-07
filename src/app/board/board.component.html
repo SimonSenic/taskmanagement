@@ -1,12 +1,12 @@
 <main>
   <div class="top">
-    <h1 id="username">USERNAME</h1>
+    <h1 id="email">EMAIL</h1>
     <button (click)="signOut()">LOGOUT</button>
   </div>
   <div class="taskBoard">
     <div class="taskSection">
       <h3>TO DO</h3>
-      <div></div>
+      <div class="example-box" *ngFor="let item of todo">{{ item  }}</div>
     </div>
     <div class="taskSection">
       <h3>DOING</h3>
