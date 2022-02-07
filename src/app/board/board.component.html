@@ -1,20 +1,37 @@
 <main>
   <div class="top">
-    <h1 id="email">EMAIL</h1>
-    <button (click)="signOut()">LOGOUT</button>
+    <h1 id="username">USERNAME</h1>
+    <button id="logout" (click)="signOut()">LOGOUT</button>
   </div>
-  <div class="taskBoard">
-    <div class="taskSection">
-      <h3>TO DO</h3>
-      <div class="example-box" *ngFor="let item of todo">{{ item  }}</div>
-    </div>
-    <div class="taskSection">
-      <h3>DOING</h3>
-    </div>
-    <div class="taskSection">
-      <h3>DONE</h3>
+  <div class="example-container">
+    <h2>To do</h2>
+  
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
     </div>
   </div>
+  
+  <div class="example-container">
+    <h2>Done</h2>
+  
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+  
+  
 
 </main>
 
