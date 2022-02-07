@@ -3,20 +3,34 @@
     <h1 id="username">USERNAME</h1>
     <button id="logout" (click)="signOut()">LOGOUT</button>
   </div>
-  <div class="example-container">
+  <div class="taskBoard">
+    <div class="example-container">
     <h2>To do</h2>
   
     <div
       cdkDropList
       #todoList="cdkDropList"
       [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doneList]"
+      [cdkDropListConnectedTo]="[doingList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
     </div>
-  </div>
+    </div>
   
+    <div class="example-container">
+      <h2>Doing</h2>
+    
+      <div
+        cdkDropList
+        #doingList="cdkDropList"
+        [cdkDropListData]="doing"
+        [cdkDropListConnectedTo]="[doneList, todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of doing" cdkDrag>{{item}}</div>
+      </div>
+      </div>
   <div class="example-container">
     <h2>Done</h2>
   
@@ -24,13 +38,14 @@
       cdkDropList
       #doneList="cdkDropList"
       [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList]"
+      [cdkDropListConnectedTo]="[doingList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
     </div>
   </div>
   
+  </div>
   
 
 </main>

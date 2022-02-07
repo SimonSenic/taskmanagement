@@ -1,32 +1,96 @@
-.example-container {
-  width: 400px;
+main {
+  display: flex;
+  flex-direction: column;
+}
+main > .top {
+  width: 100%;
+  height: 75px;
+  background: radial-gradient(34.06% 283.52% at 50% 63.74%, #47003C 0%, #1B0016 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: -7px;
+  margin-left: -7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main > .top > #username{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 25px;
+  margin-left: 1em;
+}
+main > .top #logout {
+  background-color: #000000;
+  border-radius: 40px;
+  color: white;
+  border: 0px;
+  padding: 1em 2em;
+  margin-right: 2em;
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
+  transition-duration: 0.1s;
+}
+main > .top #logout:hover{
+  transform: scale(1.1);
+}
+main > .taskBoard{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+main > .taskBoard > .example-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  width: 30em;
   max-width: 100%;
   margin: 0 25px 25px 0;
-  display: inline-block;
   vertical-align: top;
+}
+main > .taskBoard > .example-container > h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+  margin-top: -10px;
+  margin: auto;
+  padding: 0.5em 0em;
+  text-align: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px 25px 0px 0px;
 }
 
 .example-list {
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
 }
 
 .example-box {
-  padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;;
+  color: white;
+  font-size: 20px;
+  background: linear-gradient(90.08deg, #FFA800 -35.49%, #580060 111.15%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 0.5em;
+  padding: 1em 0em;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
   cursor: move;
-  background: white;
-  font-size: 14px;
 }
 
 .cdk-drag-preview {
