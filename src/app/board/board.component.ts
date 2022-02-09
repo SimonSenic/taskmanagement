@@ -14,11 +14,8 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class BoardComponent implements OnInit {
 
   todo!: Observable<any[]>;
-  todo_!: AngularFireList<any>;
   doing!: Observable<any[]>;
-  doing_!: AngularFireList<any>;
   done!: Observable<any[]>;
-  done_!: AngularFireList<any>;
 
   constructor(private auth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {}
 
@@ -26,7 +23,7 @@ export class BoardComponent implements OnInit {
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
-      //moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -52,7 +49,7 @@ export class BoardComponent implements OnInit {
         title: title,
         description: ""
       })
-      this.db.list(previousContainer.id).remove(title);
+      this.db.list(previousContainer.id).remove(title); console.log(this.db.list('todo'));
     }else{ console.log("nejdze")}
   }
 
@@ -70,14 +67,9 @@ export class BoardComponent implements OnInit {
 
   ngOnInit(): void { 
     //this.add();
-    this.todo_ = this.db.list('todo');
-    this.todo = this.todo_.valueChanges();
-
-    this.doing_ = this.db.list('doing');
-    this.doing = this.doing_.valueChanges();
-
-    this.done_ = this.db.list('done');
-    this.done = this.done_.valueChanges();
+    this.todo = this.db.list('todo').valueChanges();
+    this.doing = this.db.list('doing').valueChanges();
+    this.done = this.db.list('done').valueChanges();
   }
 
 }

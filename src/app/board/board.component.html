@@ -12,10 +12,11 @@
       id="todo"
       #todoList="cdkDropList"
       [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[doingList]"
+      [cdkDropListConnectedTo]="[doingList,doneList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of todo | async" cdkDrag>{{ item.title }}</div>
+      <div class="empty" *ngIf="(todo | async)?.length === 0"></div>
     </div>
     </div>
   
@@ -31,6 +32,7 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let item of doing | async" cdkDrag>{{ item.title }}</div>
+        <div class="empty" *ngIf="(doing | async)?.length === 0"></div>
       </div>
       </div>
   <div class="example-container">
@@ -41,10 +43,11 @@
       id="done"
       #doneList="cdkDropList"
       [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[doingList]"
+      [cdkDropListConnectedTo]="[doingList, doneList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of done | async" cdkDrag>{{ item.title }}</div>
+      <div class="empty" *ngIf="(done | async)?.length === 0"></div>
     </div>
   </div>
   
