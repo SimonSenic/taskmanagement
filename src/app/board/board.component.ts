@@ -3,7 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
@@ -31,26 +32,30 @@ export class BoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      //console.log(event.item);
-      //this.getName(event.item);
+      //console.log(this.todo.subscribe(res => { console.log(res[0]) }));
+      //this.getName(event.item.element.nativeElement.innerHTML);
       this.update(event.item.element.nativeElement.innerHTML, event.previousContainer, event.container)
     }
   }
 
-  /*getName(item: any){
-    //console.log(this.todo)
-    for(var i=0; i<10; i++){
-    }
-  }*/
-
   update(title: string, previousContainer: any, container: any){
-    if(container.data !== previousContainer.data){
-      this.db.list(container.id).set(title, {
-        title: title,
-        description: ""
-      })
-      this.db.list(previousContainer.id).remove(title); console.log(this.db.list('todo'));
-    }else{ console.log("nejdze")}
+    this.db.list(previousContainer.id).valueChanges().pipe(take(1)).subscribe(result => {
+      for(var i=0; i<result.length; i++){
+        const obj: any = result[i];
+        if(title === obj.title){
+
+          if(container.data !== previousContainer.data){
+            this.db.list(container.id).set(title, {
+              title: title,
+              description: obj.description
+            })
+            this.db.list(previousContainer.id).remove(title); 
+            console.log(this.db.list(container.id));
+          }
+
+        }
+      }
+    })
   }
 
   add(){
