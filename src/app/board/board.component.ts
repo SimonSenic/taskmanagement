@@ -58,10 +58,10 @@ export class BoardComponent implements OnInit {
     })
   }
 
-  add(){
-    this.db.list("doing").set('Create component',{
-      title: "Create component",
-      description: "Create new component"
+  addTask(title: string, description: string){
+    this.db.list("todo").set(title, {
+      title: title,
+      description: description
     });
   }
 
@@ -71,7 +71,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-    //this.add();
+    //this.addTask();
     this.todo = this.db.list('todo').valueChanges();
     this.doing = this.db.list('doing').valueChanges();
     this.done = this.db.list('done').valueChanges();
