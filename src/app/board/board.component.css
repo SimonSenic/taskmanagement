@@ -99,7 +99,22 @@ main > .taskBoard > .example-container > h2 {
   box-sizing: border-box;
   cursor: move;
 }
-
+main > footer > #add{
+  background-color: #000000;
+  border-radius: 40px;
+  color: white;
+  border: 0px;
+  padding: 1em 2em;
+  margin-right: 2em;
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
+  transition-duration: 0.1s;
+  float: right;
+  margin-right: 3em;
+}
+main > footer > #add:hover{
+  transform: scale(1.1);
+}
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 4px;
