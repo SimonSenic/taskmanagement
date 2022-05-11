@@ -24,7 +24,7 @@ export class BoardComponent implements OnInit {
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      //moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);  //TOTO CRASHUJE STRANKU
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -70,11 +70,17 @@ export class BoardComponent implements OnInit {
     window.location.reload();
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void { console.log(firebase.auth().currentUser?.email)
     //this.addTask();
     this.todo = this.db.list('todo').valueChanges();
     this.doing = this.db.list('doing').valueChanges();
     this.done = this.db.list('done').valueChanges();
+
+    document.getElementById("username")!.innerHTML = firebase.auth().currentUser?.email!
+
+    if(document.getElementById("username")!.innerHTML != 'admin@taskmanagement.com'){
+      document.getElementById("add")!.style.display = 'none';
+    }
   }
 
 }
