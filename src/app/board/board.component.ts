@@ -34,7 +34,7 @@ export class BoardComponent implements OnInit {
       );
       //console.log(this.todo.subscribe(res => { console.log(res[0]) }));
       //this.getName(event.item.element.nativeElement.innerHTML);
-      this.update(event.item.element.nativeElement.innerHTML, event.previousContainer, event.container)
+      this.update(event.item.element.nativeElement.innerText, event.previousContainer, event.container)
     }
   }
 
@@ -70,7 +70,7 @@ export class BoardComponent implements OnInit {
     window.location.reload();
   }
 
-  ngOnInit(): void { console.log(firebase.auth().currentUser?.email)
+  ngOnInit(): void { 
     //this.addTask();
     this.todo = this.db.list('todo').valueChanges();
     this.doing = this.db.list('doing').valueChanges();
