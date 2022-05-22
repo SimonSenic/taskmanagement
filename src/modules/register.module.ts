@@ -12,7 +12,7 @@ import { LoginComponent } from 'src/app/login/login.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [RegisterComponent]
 })

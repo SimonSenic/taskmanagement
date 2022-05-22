@@ -5,40 +5,54 @@
   </div>
   <div class="taskBoard">
     <div class="example-container">
-    <h2>To do</h2>
+      <h2>To do</h2>
   
-    <div
+      <mat-accordion 
       cdkDropList
       id="todo"
       #todoList="cdkDropList"
       [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="[doingList,doneList]"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo | async" cdkDrag>{{ item.title }}</div>
-      <div class="empty" *ngIf="(todo | async)?.length === 0"></div>
-    </div>
+      (cdkDropListDropped)="drop($event)" >
+        <mat-expansion-panel class="example-box" cdkDrag *ngFor="let item of todo | async" hideToggle>
+          <div class="empty" *ngIf="(todo | async)?.length === 0"></div>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>{{item.description}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
     </div>
   
     <div class="example-container">
       <h2>Doing</h2>
     
-      <div
-        cdkDropList
+      <mat-accordion 
+      cdkDropList
         id="doing"
         #doingList="cdkDropList"
         [cdkDropListData]="doing"
         [cdkDropListConnectedTo]="[doneList, todoList]"
         class="example-list"
         (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of doing | async" cdkDrag>{{ item.title }}</div>
-        <div class="empty" *ngIf="(doing | async)?.length === 0"></div>
-      </div>
-      </div>
+        <mat-expansion-panel  class="example-box" cdkDrag *ngFor="let item of doing | async" hideToggle>
+          <div class="empty" *ngIf="(doing | async)?.length === 0"></div>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p>{{item.description}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+  </div>
   <div class="example-container">
     <h2>Done</h2>
   
-    <div
+    <mat-accordion 
       cdkDropList
       id="done"
       #doneList="cdkDropList"
@@ -46,12 +60,19 @@
       [cdkDropListConnectedTo]="[doingList, doneList]"
       class="example-list"
       (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done | async" cdkDrag>{{ item.title }}</div>
-      <div class="empty" *ngIf="(done | async)?.length === 0"></div>
+      <mat-expansion-panel class="example-box" cdkDrag *ngFor="let item of done | async" hideToggle>
+        <div class="empty" *ngIf="(done | async)?.length === 0"></div>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{item.title}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+          <p>{{item.description}}</p>
+      </mat-expansion-panel>
+  </mat-accordion>
     </div>
   </div>
   
-  </div>
   <footer>
     <button id="add" routerLink="/add" routerLinkActive="active">ADD TASK</button>
   </footer>

@@ -13,13 +13,15 @@ import { RegisterModule } from 'src/modules/register.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BoardComponent,
-    AddTaskComponent
+    AddTaskComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,9 @@ import { AddTaskComponent } from './add-task/add-task.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireDatabaseModule,
-    DragDropModule
+    DragDropModule,
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

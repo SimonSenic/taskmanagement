@@ -82,7 +82,7 @@ main > .taskBoard > .example-container > h2 {
   border-radius: 25px;
 }
 
-.example-box {
+mat-expansion-panel{
   font-family: 'Nunito', sans-serif;
   font-weight: 600;;
   color: white;
@@ -91,13 +91,21 @@ main > .taskBoard > .example-container > h2 {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin: 0.5em;
-  padding: 1em 0em;
+  padding: 0.5em 0em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   cursor: move;
+}
+.mat-accordion .mat-expansion-panel:not(.mat-expanded), .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing){
+  border-radius: 10px;
+}
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-radius: 10px;
+}
+.mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
+  background:local;
 }
 main > footer > #add{
   background-color: #000000;
