@@ -50,12 +50,18 @@ export class BoardComponent implements OnInit {
               description: obj.description
             })
             this.db.list(previousContainer.id).remove(title); 
-            console.log(this.db.list(container.id));
+            console.log(this.db.list(container.id)); 
           }
 
         }
       }
     })
+  }
+
+  clear(){
+    if(document.getElementById("username")!.innerHTML === 'admin@taskmanagement.com'){
+      this.db.list("done").remove();
+    }
   }
 
   addTask(title: string, description: string){
