@@ -16,7 +16,8 @@ export class AddTaskComponent implements OnInit {
     if(firebase.auth().currentUser?.email! === 'admin@taskmanagement.com'){
       this.db.list("todo").set(title, {
       title: title,
-      description: description
+      description: description,
+      worker: ""
       });
     }
   }

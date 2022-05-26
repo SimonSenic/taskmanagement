@@ -47,7 +47,8 @@ export class BoardComponent implements OnInit {
           if(container.data !== previousContainer.data){
             this.db.list(container.id).set(title, {
               title: title,
-              description: obj.description
+              description: obj.description,
+              worker: obj.worker
             })
             this.db.list(previousContainer.id).remove(title); 
             console.log(this.db.list(container.id)); 
