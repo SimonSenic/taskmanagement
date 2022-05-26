@@ -57,6 +57,36 @@ export class BoardComponent implements OnInit {
       }
     })
   }
+  
+  addToTask(title: string){ //title = title tasku
+    this.db.list("todo").valueChanges().pipe(take(1)).subscribe(result => {
+      for(var i=0; i<result.length; i++){
+        const obj: any = result[i];
+        if(obj.worker === "" && obj.title === title){
+          this.db.list("todo").set(title, {
+            title: title,
+            description: obj.description,
+            worker: document.getElementById("username")!.innerHTML
+          })
+        }
+      }
+    })
+  }
+
+  removeFromTask(title: string){ //title - title tasku
+    this.db.list("todo").valueChanges().pipe(take(1)).subscribe(result => {
+      for(var i=0; i<result.length; i++){
+        const obj: any = result[i];
+        if(obj.worker != "" && obj.title === title){
+          this.db.list("todo").set(title, {
+            title: title,
+            description: obj.description,
+            worker: ""
+          })
+        }
+      }
+    })
+  }
 
   clear(){
     if(document.getElementById("username")!.innerHTML === 'admin@taskmanagement.com'){
@@ -64,12 +94,13 @@ export class BoardComponent implements OnInit {
     }
   }
 
+  /*
   addTask(title: string, description: string){
     this.db.list("todo").set(title, {
       title: title,
       description: description
     });
-  }
+  }*/
 
   signOut(){
     this.auth.signOut();
@@ -77,6 +108,8 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void { 
+    //this.removeFromTask("Start");
+    //this.addToTask("Start");
     //this.addTask();
     this.todo = this.db.list('todo').valueChanges();
     this.doing = this.db.list('doing').valueChanges();
