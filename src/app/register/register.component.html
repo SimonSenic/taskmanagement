@@ -3,10 +3,17 @@
     <h1 class="title">REGISTER</h1>
     <form class="formBox" [formGroup]="registerForm">
       <input type="text" formControlName="email" placeholder="EMAIL">
+      <div id="err" *ngIf="email.errors && (email.errors.required || email.errors.email) && validity==false">*Email is required</div>
       <input type="password" formControlName="password" placeholder="PASSWORD">
+      <div id="err" *ngIf="password.errors && password.errors.required && validity==false">*Password is required</div>
+      <div id="err" *ngIf="password.errors && password.errors.minlength && validity==false">*Password must be at least 6 characters</div>
       <input type="password" formControlName="repeat" placeholder="REPEAT PASSWORD">
+      <div id="err" *ngIf="repeat.errors && repeat.errors.required && validity==false">*Repeat password is required</div>
+
       
       <button type="submit" class="submit" (click)=signUp()>REGISTER</button>
+      <div id="err2" *ngIf="validity==true && unauth==true">*Email is already taken</div>
+      <div id="err2" *ngIf="validity==true && unauth==false && mismatch==true">*Passwords must match</div>
     </form>
   </div>
   

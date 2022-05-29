@@ -3,8 +3,12 @@
     <h1 class="title">LOGIN</h1>
     <form class="formBox" [formGroup]="loginForm">
       <input type="text" formControlName="email" placeholder="EMAIL">
+      <div id="err" *ngIf="email.errors && email.errors.required && validity==false">*Email is required</div>
       <input type="password" formControlName="password" placeholder="PASSWORD">
+      <div id="err" *ngIf="password.errors && password.errors.required && validity==false">*Password is required</div>
+    
       <button type="submit" class="submit" (click)="signIn()">LOGIN</button>
+      <div id="err2" *ngIf="unauth==true">*Wrong email or password</div>
     </form>
   </div>
   
