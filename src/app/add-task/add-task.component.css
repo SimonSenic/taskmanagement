@@ -77,6 +77,17 @@ main > #task > button {
 main > #task > button:hover{
     transform: scale(1.1);
 }
+main > #task > #top > input.ng-invalid{
+  border: 1.5px solid red;
+}
+main > #task > #bottom > input.ng-invalid{
+  border: 1.5px solid red;
+}
+#err{
+  padding-left: 10%;
+  padding-top: 1%;
+  color:red;
+}
 
 
 

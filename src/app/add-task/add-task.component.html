@@ -1,13 +1,16 @@
 <main>
-  <form id="task">
+  <form id="task" [formGroup]="addTaskForm">
     <H1>ADD NEW TASK</H1>
     <div id="top">
-      <input type="text" class="taskInput" placeholder="TASK NAME">
+      <input type="text" class="taskInput" placeholder="TASK NAME" formControlName="title">
+      
      <!-- <input type="text" class="taskInput" placeholder="EMPLOYEE"> -->
     </div>
+    <div id="err" *ngIf="title.errors && title.errors.required && validity==false">*Title is required</div>
     <div id="bottom">
-      <input type="text" class="taskInput" id="taskInputDetails" placeholder="DETAILS ABOUT TASK">
+      <input type="text" class="taskInput" id="taskInputDetails" placeholder="DETAILS ABOUT TASK" formControlName="description">
+      <div id="err" *ngIf="description.errors && description.errors.required && validity==false">*Description is required</div>
      </div>
-     <button type="submit" class="submit" routerLink="/" (click)="addTask('Test', '...')">ADD TASK</button>
+     <button type="submit" class="submit" (click)="addTask(title.value, description.value)">ADD TASK</button>
   </form>
 </main>
