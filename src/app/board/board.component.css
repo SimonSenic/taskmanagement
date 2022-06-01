@@ -107,20 +107,30 @@ mat-expansion-panel{
 .mat-expansion-panel-header.mat-expanded:focus, .mat-expansion-panel-header.mat-expanded:hover {
   background:local;
 }
-main > footer > #add{
+.button#employee {
+  background-color: #FFA800;
+  font-size: small;
+  padding: 0.3em;
+  border-radius: 20px;
+} 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-right: 2em;
+}
+.button{
   background-color: #000000;
   border-radius: 40px;
   color: white;
   border: 0px;
   padding: 1em 2em;
-  margin-right: 2em;
   cursor: pointer;
   transition: all .2s ease-in-out; 
   transition-duration: 0.1s;
-  float: right;
   margin-right: 3em;
 }
-main > footer > #add:hover{
+.button:hover{
   transform: scale(1.1);
 }
 .cdk-drag-preview {

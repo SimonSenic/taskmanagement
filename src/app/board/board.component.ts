@@ -120,6 +120,7 @@ export class BoardComponent implements OnInit {
 
     if(document.getElementById("username")!.innerHTML != 'admin@taskmanagement.com'){
       document.getElementById("add")!.style.display = 'none';
+      document.getElementById("clearBoard")!.style.display = 'none';
     }
   }
 
