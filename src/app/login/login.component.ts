@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -29,9 +30,9 @@ export class LoginComponent implements OnInit {
       .then(() => { 
         console.log("Signed in")
         this.router.navigate(['']);
-      }).catch(() => {
+      }).catch((error) => {
         this.unauth=true;
-        console.log("---")
+        console.log(error)
       })
       this.validity=true;
     }else{ 

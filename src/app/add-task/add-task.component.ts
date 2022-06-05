@@ -3,6 +3,8 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/datab
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-task',
@@ -21,8 +23,9 @@ export class AddTaskComponent implements OnInit {
         title: title,
         description: description,
         worker: ""
-      }).catch(() => {
+      }).catch((error) => {
         this.validity=false;
+        console.log(error)
       }).then(() => {
         this.router.navigate(['']);
         console.log("task added");

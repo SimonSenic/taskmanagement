@@ -59,12 +59,12 @@ export class BoardComponent implements OnInit {
     })
   }
   
-  addToTask(title: string){ //title = title tasku
-    this.db.list("todo").valueChanges().pipe(take(1)).subscribe(result => {
+  addToTask(title: string, list: string){ //title = title tasku
+    this.db.list(list).valueChanges().pipe(take(1)).subscribe(result => {
       for(var i=0; i<result.length; i++){
         const obj: any = result[i];
         if(obj.worker === "" && obj.title === title){
-          this.db.list("todo").set(title, {
+          this.db.list(list).set(title, {
             title: title,
             description: obj.description,
             worker: document.getElementById("username")!.innerHTML
@@ -74,12 +74,12 @@ export class BoardComponent implements OnInit {
     })
   }
 
-  removeFromTask(title: string){ //title - title tasku
-    this.db.list("todo").valueChanges().pipe(take(1)).subscribe(result => {
+  removeFromTask(title: string, list: string){ //title - title tasku
+    this.db.list(list).valueChanges().pipe(take(1)).subscribe(result => {
       for(var i=0; i<result.length; i++){
         const obj: any = result[i];
         if(obj.worker != "" && obj.title === title){
-          this.db.list("todo").set(title, {
+          this.db.list(list).set(title, {
             title: title,
             description: obj.description,
             worker: ""

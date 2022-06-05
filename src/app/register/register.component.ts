@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -32,9 +33,9 @@ export class RegisterComponent implements OnInit {
       .then(() => { 
         console.log("Signed up");
         this.router.navigate(['']);
-      }).catch(() => {
+      }).catch((error) => {
         this.unauth=true;
-        console.log("---")
+        console.log(error)
       })
       this.validity=true;
     }else if(this.registerForm.valid && this.password.value!=this.repeat.value){ 

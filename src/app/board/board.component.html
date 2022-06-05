@@ -24,8 +24,8 @@
             <p>{{item.description}}</p>
             <p>{{item.worker}}</p>
             <div class="buttons">
-              <button class="button" id="employee" (click)=" addToTask(item.title)">ASSIGN TO TASK</button>
-              <button class="button" id="employee" (click)="removeFromTask(item.title)">UNASSIGN FROM TASK</button>
+              <button class="button" id="employee" (click)=" addToTask(item.title, 'todo')">ASSIGN TO TASK</button>
+              <button class="button" id="employee" (click)="removeFromTask(item.title, 'todo')">UNASSIGN FROM TASK</button>
             </div>
         </mat-expansion-panel>
         <div class="empty" *ngIf="(todo | async)?.length === 0"></div>
@@ -52,8 +52,8 @@
             <p>{{item.description}}</p>
             <p>{{item.worker}}</p>
             <div class="buttons">
-              <button class="button" id="employee" (click)=" addToTask(item.title)">ASSIGN TO TASK</button>
-              <button class="button" id="employee" (click)="removeFromTask(item.title)">UNASSIGN FROM TASK</button>
+              <button class="button" id="employee" (click)="addToTask(item.title, 'doing')">ASSIGN TO TASK</button>
+              <button class="button" id="employee" (click)="removeFromTask(item.title, 'doing')">UNASSIGN FROM TASK</button>
             </div>
         </mat-expansion-panel>
         <div class="empty" *ngIf="(doing | async)?.length === 0"></div>
